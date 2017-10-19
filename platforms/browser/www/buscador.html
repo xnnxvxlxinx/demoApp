@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <title>Inicio</title>
+<meta http-equiv="Expires" content="0">
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+    <script type="text/javascript" src="archivos_base/script/isMobile.js"></script>
+	<link rel="stylesheet" type="text/css" href="archivosbase/CSS/cabeza.css">	
+	<link rel="stylesheet" type="text/css" href="archivosbase/CSS/map.css">	
+	<link rel="shortcut icon" href="archivosbase/icons/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="archivosbase/CSS/errores.css">
+	<link rel="stylesheet" type="text/css" href="archivosbase/CSS/ajax-loader.css">
+<script type="text/javascript" 
+    src="https://maps.google.com/maps/api/js?sensor=false&key=AIzaSyDfGxUMXZLtPNZzXgJ1xioFvsJranjPkiU"> 
+</script> 
+<script src="archivosbase/jquerymobile145/jquery-3.2.1.min.js"></script>
+ <script src="archivosbase/jquerymobile145/jquery.mobile-1.4.5.min.js"></script>
+ <script type="text/javascript" src="cordova.js"></script>
+</head>
+<body onload='initialize(); htmlTagsInicial();'>
+<div id="container">
+    <div id="cabecera">
+    </div>
+	<div id='contenido'>
+		
+		<div id='menuTags'></div>
+		
+		<div id='contenidoBuscador'>
+			<div id='botonBuscador'>
+			</div>
+			<div id='mapaBuscador'>
+<script type='text/javascript'> 
+var map;
+var marker = [];
+var markers = [];
+$( document ).ready(function() {
+
+$( "#menu_izquierda" ).click(function() {
+  document.getElementById('menu_izquierda').style.width='100%';
+});
+});
+function initialize() {
+	
+
+var lat=-0.1574824;	
+var lon=-78.4682946;	
+    var myLatlng = new google.maps.LatLng(lat,lon); 
+    var myOptions = { 
+        zoom: 11,
+        center: myLatlng, 
+		
+        mapTypeId: google.maps.MapTypeId.ROADMAP, 
+    } 
+     map = new google.maps.Map(document.getElementById('map_canvas'), myOptions); 
+	
+	 map.setOptions({styles: styles['hide']});
+	  llamarmarc('');
+  } 
+ var styles = {
+        default: null,
+        hide: [
+          {
+            featureType: 'poi.business',
+            stylers: [{visibility: 'off'}]
+          },
+          {
+            featureType: 'transit',
+            elementType: 'labels.icon',
+            stylers: [{visibility: 'off'}]
+          }
+        ]
+      }; 
+ var buscheck=''; 
+function llamarmarc(busqueda){
+	buscheck=busqueda;
+	deleteMarkers();
+	document.getElementById('ajax-loader').style.display='block';
+	   $.getJSON('http://nirjob.com/archivosbase/php/Buscador100Jq/funcionbuscadorjq.php' + busqueda, function(data) {
+		   
+		var tamanio=data.length;
+			for(var i=0; i<tamanio; i++){
+		
+				var latt=parseFloat(data[i].Lat);
+				var lon=parseFloat(data[i].Lon);
+				var ImgTag=data[i].ImgTag;
+				var ImgUser=data[i].ImgUser;
+				var Nombre=data[i].Nombre;
+				var Descri=data[i].Descri;
+				var ID=data[i].ID;
+			marcadores(latt, lon, ImgTag, ImgUser, Nombre, Descri, ID);
+			}
+		document.getElementById('ajax-loader').style.display='none';	
+		});	
+		//setTimeout(function(){deleteMarkers()},5000);
+	}
+	 function clearMarkers() {
+        setMapOnAll(null);
+      }
+ function deleteMarkers() {
+        clearMarkers();
+        markers = [];
+		//llamarmarc();
+      }
+	  var cont=0;
+
+function marcadores(lati, lon, ImgTag, ImgUser, Nombre, Descri, ID){
+if(Descri!='Esta empresa o servicio aún no cuenta con descripción.'){
+var image={
+		url: 'http://nirjob.com/' + ImgTag,
+		size: new google.maps.Size(64, 64),
+		 origin: new google.maps.Point(0, 0),
+		 anchor: new google.maps.Point(17, 34),
+		scaledSize: new google.maps.Size(59, 65)
+		};
+		}else{
+		var image={
+		};
+		}
+var contentString = '<div class=\"contentString\">'+
+	'<img class=\"contentImg\" src=\"http://nirjob.com/'+ ImgUser +'\" />' +
+	'<div class=\"contentMap\"><h3>'+ Nombre +'</h3><div class=\"contentDescription\">'+ Descri +'</div></br>' +
+	'<button onclick=\"location.href=\'Visor/visorE.php?ID='+ ID +'\'\" class=\"contentButton\">Con&oacute;celos</button>' +
+      '</div></div>';	
+	var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });		
+	marker = new google.maps.Marker({		
+        position: {lat: lati, lng: lon},
+		map: map,
+		icon: image,		
+        title:'' 
+    }); 
+marker.addListener('click', (function(marker) {
+ return function() {   
+ infowindow.open(map, marker);}
+  })(marker));	
+	 markers.push(marker);
+cont=cont+1;	 
+  }
+   function setMapOnAll(map) {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(map);
+        }
+      }
+	  function subTag(TAG){
+		  if(TAG!='Todos'){
+			document.getElementById('categoriaTagPrincipalMenu').style.display='none';
+			document.getElementById('categoriaCheckButton').style.display='block';
+		  }else{
+			document.getElementById('categoriaTagPrincipalMenu').style.display='block';
+			document.getElementById('categoriaCheckButton').style.display='none';
+		  }
+		 
+		 $.getJSON('http://nirjob.com/archivosbase/php/Buscador100Jq/funciontablaTag.php', function(datat) {
+			 
+		var tamaniot=datat.length;
+			for(var i=0; i<tamaniot; i++){
+			 var ID=datat[i].ID;
+			
+			 if(TAG==ID){
+			document.getElementById('categoriaCheckButton_' + ID).style.display='block';
+
+		}else{
+			document.getElementById('categoriaCheckButton_' + ID).style.display='none';
+		}
+			}
+		});	
+
+	  
+	  }
+	  
+	  function checkTagSecundario(e, Tag){
+		  var check=e.checked;
+		  var busc='&tagS%5B%5D='+ e.value;
+		  if(check==true){
+		  buscheck=buscheck + busc;
+		  }else{
+			  buscheck=buscheck.replace(busc, '');
+		  }
+		  
+		  llamarmarc(buscheck);
+	  }
+	function htmlTagsInicial(){
+	$.get("archivosbase/cabeza.html", function(htmlexterno){
+   $("#cabecera").html(htmlexterno);
+    	});
+	document.getElementById('ajax-loader').style.display='block';
+	$.get('http://nirjob.com/archivosbase/php/Buscador100Jq/funcionhtmlTagsInicial.php', function(texto) {
+		document.getElementById('menu_izquierda').innerHTML=texto;
+		document.getElementById('ajax-loader').style.display='none';
+	});	
+	}  
+  </script>
+			<div id='menu_izquierda'>
+		
+			</div>
+			<div id='mapas_de_google' >
+			<div id='map_canvas'></div>
+			</div>
+			
+			</div>
+			<div id='productosBuscador'>
+			</div>
+		</div>
+		
+	</div>
+	<div id='footer'>
+	</div>
+	<div id='ajax-loader'>
+	<img src='archivosbase/img/ajax-loader.gif'/>
+	</div>
+</div>
+</body>
+</html>
