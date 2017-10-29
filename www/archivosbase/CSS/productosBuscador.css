@@ -1,12 +1,10 @@
 #productosBuscador{
 	/*EDITAR PARA HACERLE CON FLOAT EL MENU*/
-	position:relative;
-	/*top:-35em;*/
-	float:right;
-	width:70%;
-	right:5%;
-	height:auto;
+	width:90%;
+margin:1em 5% 0 5%;
 }
+
+
 #mostradorProductos div{
 	width:100%;
 	border:solid 1px black;

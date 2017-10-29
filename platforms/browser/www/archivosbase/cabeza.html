@@ -1,30 +1,49 @@
 <div id="cabeza">
     <div id="logo"><div class="logoMain"></div></div>
-	<div id="menuCabezaProductos"><div class="menuCabezaProductosC"></div></div>
-	<div id="menuCabezaContratacion"><div class="menuCabezaContratacion"></div></div>
-	<div id="menuCabezaEmpresas"><div class="menuCabezaEmpresas"></div></div>
-    <div id="configuracion"><div class='configButton'></div></div>
+	<div id='MenuCabeza'>
+	<ul id='MenuCabezaUl'>
+
+	</ul>
+	</div>
 	
 <script>
 var resolucionheight=screen.height;
-var resolucionheight10=resolucionheight*0.30;
+var resolucionheight10=resolucionheight*0.10;
+var Usuario = localStorage.getItem('SesionUsuario') || '<empty>';
+var Nivel = localStorage.getItem('SesionNivel') || '<empty>';
 document.getElementById('cabeza').style.height=resolucionheight10+'px';
+document.getElementById('MenuCabeza').style.height=resolucionheight*0.7+'px';
+document.getElementById('MenuCabeza').style.top=resolucionheight10+'px';
 	function getAbsolutePath() {
     var loc = window.location;
     var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
     return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
 }
-$( ".configButton" ).click(function() {
-  location.href =getAbsolutePath() + 'Login/administrar.html';
-});
 $( "#logo" ).click(function() {
-  location.href =getAbsolutePath();
-});
-$( ".menuCabezaProductosC" ).click(function() {
-  location.href =getAbsolutePath() + 'productos.html';
-});
-	$( ".menuCabezaEmpresas" ).click(function() {
-  location.href =getAbsolutePath() + 'buscador.html';
+$( "#MenuCabeza" ).fadeToggle(200);
+var texto="";
+if(Usuario!='<empty>' && Nivel!='<empty>'){
+if(Nivel==1){
+texto = texto + "<li><h5>" + Usuario + "</h5></li>";
+texto = texto + "<li><a>Mi Sesion</a></li>";
+texto = texto + "<li><a>Empresas/Productos</a></li>";
+texto = texto + "<li><a>Servicios</a></li>";
+texto = texto + "<li><a>Configuraciones de Administrador</a></li>";
+texto = texto + "<li><a href='" + getAbsolutePath() + "Login/logout.html'>Cerrar Sesion</a></li>";
+}else{
+texto = texto + "<li><h5>" + Usuario + "</h5></li>";
+texto = texto + "<li><a>Mi Sesion</a></li>";
+texto = texto + "<li><a>Empresas/Productos</a></li>";
+texto = texto + "<li><a>Servicios</a></li>";
+texto = texto + "<li><a>Publicar nuevo Servicio</a></li>";
+texto = texto + "<li><a href='" + getAbsolutePath() + "Login/logout.html'>Cerrar Sesion</a></li>";
+}
+}else{
+texto = texto + "<li><a href='" + getAbsolutePath() + "Login/'>Inicio de Sesion</a></li>";
+texto = texto + "<li><a>Empresas/Productos</a></li>";
+texto = texto + "<li><a>Servicios</a></li>";
+}
+$("#MenuCabezaUl").html(texto);
 });
 
 </script>

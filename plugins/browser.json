@@ -63,6 +63,12 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.demo"
+        },
+        "cordova-plugin-native-transitions": {
+            "PACKAGE_NAME": "com.demo"
+        },
+        "com.telerik.plugins.nativepagetransitions": {
+            "PACKAGE_NAME": "com.demo"
         }
     },
     "dependent_plugins": {

@@ -1,16 +1,13 @@
 body{
-    height: 100%;
+    font-family: sans-serif;
+	    height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
 }
-#container{
-	width:100%;
-	height:100%;
-}
 #cabeza{
     width: 100%;
-
+    height: 4em;
     color: white;
     /*background-color: #00C853;*/
     background-color: #0277BD;
@@ -18,90 +15,112 @@ body{
 }
 #cabeza div{
     float: left;
-width: 20%;
- height: 100%;
+
 }
 .limpiador
 {
     clear: both;
 
 }
+#logo{
+    width: 15%;
+    height: 100%;
+}
 
-#cabeza .menuCabezaProductosC{
-    color: #757575;
-	border: none;
-	/*position: relative;*/
-	/*margin-left: 70px;*/
-    /*background-color: #757575;*/
-    opacity: 0.9;
-    background-image:url('../img/profile.png');
-	background-repeat:no-repeat;
-	background-size: 75%;
-	background-position:center;
-	/*top: 10px;*/
-	width: 100%;
-	height: 100%;
+#busqueda{
+    width: 50%;
+    height: 3em;
+padding:0;
+margin:0;
+text-align:center;
+position: relative;
+top: 20%;
 }
-#cabeza .menuCabezaContratacion{
-    color: #757575;
-	border: none;
-	/*position: relative;*/
-	/*margin-left: 70px;*/
-    /*background-color: #757575;*/
-    opacity: 0.9;
-    background-image:url('../img/profile.png');
-	background-repeat:no-repeat;
-	background-size: 75%;
-	background-position:center;
-	/*top: 10px;*/
-	width: 100%;
-	height: 100%;
+@media only screen and (max-width: 700px) {
+    #busqueda{
+        width: 25%;
+        height: 3em;
+    padding:0;
+    margin:0;
+    text-align:center;
+    position: relative;
+    top: 20%;
+    }
 }
-#cabeza .menuCabezaEmpresas{
-    color: #757575;
-	border: none;
-	/*position: relative;*/
-	/*margin-left: 70px;*/
-    /*background-color: #757575;*/
-    opacity: 0.9;
-    background-image:url('../img/profile.png');
-	background-repeat:no-repeat;
-	background-size: 75%;
-	background-position:center;
-	/*top: 10px;*/
-	width: 100%;
-	height: 100%;
+#busqueda .search_button{
+	position: absolute;
+    opacity: 0.5;
+    width: 2.5em;
+	height: 2.5em;
+	top:4%;
+	left:85%;
+	cursor:pointer;
+	border:0;
+	padding:0;
+	background:rgba(0,0,0,0);
+	background-image:url('../img/buscar icono.png');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size: 2.4em;
 }
-#cabeza .configButton
+#busqueda .search_bar{
+    width: 75%;
+    height: 90%;
+    margin-right: -2.8em;
+
+}
+
+
+ input[type="search"].search_bar{
+   /* width: 50px;*/ /*ancho por defecto*/
+    background: #ededed ; 
+	font-size:1em;
+/*background-image:url('../img/buscar icono.png');
+background-repeat:no-repeat;
+background-position: left center;
+background-size: 45px;*/
+border-style: none;
+box-shadow: 2px 2px 2px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);
+    padding: 0.6em 15px 0.6em 20px;
+    border-radius: 10px;
+    -webkit-transition: all .5s; /* transición de .5seg a todos los elementos para chrome*/
+    -moz-transition: all .5s; /* transición de .5seg a todos los elementos para mozilla*/
+    -o-transition: all .5s; /* transición de .5seg a todos los elementos para ophera*/
+    transition: all .5s; /* transición de .5seg a todos los elementos*/
+    outline: none; /* ocultar el fucos automático de los input */
+}
+ input[type="search"]:focus.search_bar{
+   width: 80%; /*tamaño del boton buscar al hacer click*/
+    padding-left: 30px; /*espacio entre el icono lupa y el placeholder*/
+    color: #000;
+font-size:1.05em;
+    background-color: #FFF;
+}
+
+.logoMain
 {
     color: #757575;
 	border: none;
 	/*position: relative;*/
-	/*margin-left: 70px;*/
+	margin: auto;
     /*background-color: #757575;*/
     opacity: 0.9;
     background-image:url('../img/logo2.png');
 	background-repeat:no-repeat;
-	background-size: 75%;
-	background-position:center;
-	/*top: 10px;*/
+	background-size: 90%;
 	width: 100%;
 	height: 100%;
 }
-
-#cabeza .logoMain
-{
-    color: #757575;
-	border: none;
-	/*position: relative;*/
-	/*margin-left: 70px;*/
-    /*background-color: #757575;*/
-    opacity: 0.9;
-    background-image:url('../img/logo2.png');
-	background-repeat:no-repeat;
-	background-size: 75%;
-	background-position:center;
-	/*top: 10px;*/
-	width: 100%;
-	height: 100%;
+#MenuCabeza{
+	display:none;
+	position:fixed;
+	width:70%;
+	border:solid 1px black;
+	height:15em;
+	z-index:30;
+	background:rgba(0,0,0,0.7);
+}
+#MenuCabeza a{
+	color:white;
+	font-size:1em;
 }
