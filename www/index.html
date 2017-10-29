@@ -25,7 +25,7 @@
  checkConnection();
    setTimeout(function(){
   if(conn==true){
-slideBaby();
+//slideBaby();
  location.href ="buscador.html";
   }else{
   alert('error');
@@ -41,12 +41,12 @@ slideBaby();
   		.fail(function() { conn = false; })
   		.done(function() { conn = true; })
   }
-  function slideBaby() {
+  /*function slideBaby() {
 
 			window.plugins.nativepagetransitions.slide({
     "href" : "buscador.html"
 });
-          }
+          }*/
 	</script>
 </head>
 <body onload='initializeT();'>
