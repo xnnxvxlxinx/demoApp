@@ -15,7 +15,7 @@
 <script>
 var URLdomain = window.location.host;
 var protocolo = window.location.protocol;
-var url=  "file://" ;
+var url=  "file:///android_asset/www/" ;
 var resolucionheight=screen.height;
 var resolucionheight10=resolucionheight*0.10;
 var Usuario = localStorage.getItem('SesionUsuario') || '<empty>';
@@ -26,14 +26,10 @@ document.getElementById('logoMain').style.height=resolucionheight10+'px';
 document.getElementById('MenuCabeza').style.height=resolucionheight*0.7+'px';
 document.getElementById('MenuCabeza').style.top=resolucionheight10+'px';
 function funcion_buscar_text(){
-if(getAbsolutePath()!=url){
-window.location.href=url;
-}else{
 var  URLsearch=document.getElementById('search_bar_cabeza').value;
 GetBusqueda="?busqueda=" + URLsearch;
 GetbusTag="?Bus=" + URLsearch;
 llamarmarc(GetBusqueda);
-}
 }
 
 	function getAbsolutePath() {
