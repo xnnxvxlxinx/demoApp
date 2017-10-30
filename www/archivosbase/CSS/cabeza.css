@@ -24,36 +24,25 @@ body{
 }
 #logo{
     width: 15%;
-    height: 100%;
 }
 
 #busqueda{
-    width: 50%;
+    width: 65%;
     height: 3em;
 padding:0;
 margin:0;
 text-align:center;
 position: relative;
-top: 20%;
+top: 10%;
 }
-@media only screen and (max-width: 700px) {
-    #busqueda{
-        width: 25%;
-        height: 3em;
-    padding:0;
-    margin:0;
-    text-align:center;
-    position: relative;
-    top: 20%;
-    }
-}
+
 #busqueda .search_button{
 	position: absolute;
     opacity: 0.5;
     width: 2.5em;
 	height: 2.5em;
-	top:4%;
-	left:85%;
+	top:6%;
+	left:77%;
 	cursor:pointer;
 	border:0;
 	padding:0;
@@ -64,9 +53,9 @@ top: 20%;
     background-size: 2.4em;
 }
 #busqueda .search_bar{
-    width: 75%;
+    width: 90%;
     height: 90%;
-    margin-right: -2.8em;
+    margin-right: 0.3em;
 
 }
 
@@ -81,7 +70,7 @@ background-position: left center;
 background-size: 45px;*/
 border-style: none;
 box-shadow: 2px 2px 2px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07);
-    padding: 0.6em 15px 0.6em 20px;
+    padding: 0.3em 7px 0.3em 10px;
     border-radius: 10px;
     -webkit-transition: all .5s; /* transición de .5seg a todos los elementos para chrome*/
     -moz-transition: all .5s; /* transición de .5seg a todos los elementos para mozilla*/
@@ -97,7 +86,7 @@ font-size:1.05em;
     background-color: #FFF;
 }
 
-.logoMain
+#logoMain
 {
     color: #757575;
 	border: none;
@@ -107,9 +96,8 @@ font-size:1.05em;
     opacity: 0.9;
     background-image:url('../img/logo2.png');
 	background-repeat:no-repeat;
-	background-size: 90%;
+	background-size: 90% 95%;
 	width: 100%;
-	height: 100%;
 }
 #MenuCabeza{
 	display:none;
