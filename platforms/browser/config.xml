@@ -6,6 +6,7 @@
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
+    <icon height="57" src="www/archivosbase/img/logo.png" width="57" />
     <name>Demo</name>
     <description>
         Hello World sample application that responds to the deviceready event.
