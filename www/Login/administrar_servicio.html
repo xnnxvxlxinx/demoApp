@@ -105,6 +105,7 @@ var indiv = document.createElement('div');
 }
 var fotoImagen='';
 function seleccionFotoImagen(e){
+alert('tomar foto');
 navigator.camera.getPicture(correcto, error,  {quality:100, alowEdit: false});
 fotoImagen=e.src;
 }
