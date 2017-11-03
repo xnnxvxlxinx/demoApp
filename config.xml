@@ -114,7 +114,7 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <plugin name="com.telerik.plugins.nativepagetransitions" spec="https://github.com/Telerik-Verified-Plugins/NativePageTransitions" />
-    <plugin name="cordova-plugin-camera" spec="~2.1.1" />
     <plugin name="cordova-plugin-file-transfer" spec="~1.5.1" />
     <plugin name="cordova-plugin-file" spec="~4.3.3" />
+    <plugin name="cordova-plugin-camera" spec="https://github.com/apache/cordova-plugin-camera.git" />
 </widget>
