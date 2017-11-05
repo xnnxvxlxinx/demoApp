@@ -117,7 +117,9 @@
     <plugin name="cordova-plugin-file-transfer" spec="~1.5.1" />
     <plugin name="cordova-plugin-file" spec="~4.3.3" />
     <plugin name="cordova-plugin-camera" spec="https://github.com/apache/cordova-plugin-camera.git" />
-	<feature name="Camera">
-    <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
-</feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <engine name="ios" spec="~4.5.3" />
+    <engine name="android" spec="~6.3.0" />
 </widget>
